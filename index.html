@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/docs/3.3/favicon.ico">
+
+    <title>WineDSS Lite</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="index_files/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="index_files/bootstrap-theme.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="index_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="index_files/theme.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="index_files/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <style>
+    body {
+        background-image: url("index_files/wine2.png");
+
+        /* Center and scale the image nicely */
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+  </style>
+
+  <body style="background-color: #333;">
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Wine Quality DSS | <b>Lite</b></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" data-toggle="modal" data-target="#about"><b>Wine Quality DSS | Pro</b></a></li>
+              <li><a href="#" data-toggle="modal" data-target="#about">About</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="panel bg-dark" style="background-color: #222; border-color: #111; padding: 2%;">
+
+
+          <div class="panel" style="background-color: #333; width: 100%; margin-bottom: auto; height: 40px;" id="myDIV">
+            <center><h4 id="class"></center>
+          </div>
+
+        <input id="Flavanoids" autocomplete="off" name="Flavanoids" type="text" class="form-control" style="margin-top: 1%; background-color: #333; border-color: #222; color: white;" placeholder="Flavanoids">
+        <input id="Color_intensity" autocomplete="off" name="Color_intensity" type="text" class="form-control" style="margin-top: 1%; background-color: #333; border-color: #222; color: white;" placeholder="Color intensity">
+        <input id="Proline" autocomplete="off" name="Proline" type="text" class="form-control" style="margin-top: 1%; background-color: #333; border-color: #222; color: white;" placeholder="Proline">
+
+
+            <div class="row" style="margin-top: 1%;">
+              <div class="col-md-6">
+                <input type="submit" value="Submit" class="btn btn-md btn-block btn-danger" style="margin-top: 2%; color: #fff;" href="" role="button" onclick="check1(); color();" >
+              </div>
+              <div class="col-md-6">
+                <input type="submit" value="Test a new sample" class="btn btn-md btn-block btn-warning" style="margin-top: 2%; color: #fff;" href="" role="button" onclick="reload()" >
+              </div>
+            </div>
+
+
+        </div>
+
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+
+    <script>
+
+
+    function check1() {
+        var Flavanoids = document.getElementById("Flavanoids").value;
+        var Color_intensity = document.getElementById("Color_intensity").value;
+        var Proline = document.getElementById("Proline").value;
+
+        var grade;
+
+        if (Flavanoids <= 1.57) {
+          if (Color_intensity <= 3.8) {
+            grade = 2;
+          } else { grade = 3;}
+        } else if (Flavanoids > 1.57){
+          if (Proline <= 720) {
+            grade = 2;
+          } else{
+              if (Color_intensity <= 3.4){
+                grade = 2;
+              } else {
+                grade = 1;
+              }
+          }
+        }
+
+
+            if (grade == 1) {
+                text = "Wine Class: 1";
+                document.getElementById("class").innerHTML = text;
+                document.getElementById("myDIV").style.color = "#3C765A";
+                document.getElementById("myDIV").style.backgroundColor = "#B2DBA1";
+
+
+            } else if (grade == 2) {
+                text = "Wine Class: 2";
+                document.getElementById("class").innerHTML = text;
+                document.getElementById("myDIV").style.color = "#8A6D3B";
+                document.getElementById("myDIV").style.backgroundColor = "#F5E79E";
+
+            } else {
+                text = "Wine Class: 3";
+                document.getElementById("class").innerHTML = text;
+                document.getElementById("myDIV").style.color = "#C04442";
+                document.getElementById("myDIV").style.backgroundColor = "#DCA7A7";
+
+            }
+
+
+    }
+
+    function reload() {
+        location.reload();
+    }
+
+
+
+    </script>
+
+
+
+    <!-- Modal -->
+    <div id="about" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">About</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="contact" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Contact</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="index_files/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="index_files/bootstrap.js"></script>
+    <script src="index_files/docs.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="index_files/ie10-viewport-bug-workaround.js"></script>
+
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="1140" height="500" viewBox="0 0 1140 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="57" style="font-weight:bold;font-size:57pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thirdslide</text></svg></body></html>
+
+</body></html>
